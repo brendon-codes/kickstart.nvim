@@ -253,6 +253,8 @@ do
   })
 end
 
+local custom_settings = require 'custom.settings'
+
 -- ============================================================
 -- SECTION 3: PLUGIN MANAGER INTRO
 -- vim.pack intro, build hooks
@@ -740,6 +742,7 @@ do
       },
     },
   }
+  custom_settings.lsp_servers(servers)
 
   vim.pack.add {
     gh 'neovim/nvim-lspconfig',
@@ -880,6 +883,8 @@ do
       default = { 'lsp', 'path', 'snippets' },
     },
 
+    cmdline = custom_settings.blink_cmdline(),
+
     snippets = { preset = 'luasnip' },
 
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
@@ -984,6 +989,8 @@ do
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   -- require 'custom.plugins'
 end
+
+custom_settings.general()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
